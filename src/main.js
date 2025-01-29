@@ -1,28 +1,29 @@
 // Bootstrap’s CSS and JS Import
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
 
+// DOM Elements
+const form = document.getElementById('converterForm');
+const tempValue = document.getElementById('tempValue');
+const conversionType = document.getElementById('conversionType');
+const convertButton = document.getElementById('convertButton');
+const resultArea = document.getElementById('resultArea');
+const themeSwitcher = document.getElementById('themeSwitcher');
 
-const app = document.getElementById('root')
+const C2F = 'c2f';
+const F2C = 'f2c';
 
-app.innerHTML = `
-  <div class="d-flex flex-column align-items-center justify-content-center vh-100 bg-light">
-    <!-- Spinner with Yollo logo as background -->
-    <div
-      class="spinner-border"
-      role="status"
-      style="
-        width: 6rem;
-        height: 6rem;
-        border-width: 0.4rem;
-        background: url('./yollo-logo.svg') center/contain no-repeat;
-        border-color: transparent;
-      "
-    >
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <!-- Your greeting -->
-    <h1 class="mt-3">Hello Yoller!</h1>
-  </div>
-`
+// Add Form Listeners
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
 
+  const currentTempValue = tempValue.value;
+  const currentConversionType = conversionType.value;
+
+  let output;
+
+  if (currentConversionType === 'C2F') {
+    // Logic of conversion
+    output = (currentTempValue * 1.8) + 32;
+  } else {
+    output = (currentTempValue - 32) / 1.8;)
