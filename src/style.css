@@ -1,3 +1,6 @@
 .spinner-border {
   animation-duration: 3s !important;
 }
+#themeSwitcher {
+  top: 10px;
+}

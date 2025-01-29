@@ -1,29 +1,35 @@
 // Bootstrap’s CSS and JS Import
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-
+// Import converter
+import {celsiusToFahrenheit, fahrenheitToCelsius} from './converter';
 // DOM Elements
 const form = document.getElementById('converterForm');
 const tempValue = document.getElementById('tempValue');
-const conversionType = document.getElementById('conversionType');
+const tempType = document.getElementById('tempType');
+const result = document.getElementById('result');
 const convertButton = document.getElementById('convertButton');
-const resultArea = document.getElementById('resultArea');
-const themeSwitcher = document.getElementById('themeSwitcher');
 
 const C2F = 'c2f';
-const F2C = 'f2c';
+
 
 // Add Form Listeners
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const currentTempValue = tempValue.value;
-  const currentConversionType = conversionType.value;
+  const conversionType = tempType.value;
 
   let output;
 
-  if (currentConversionType === 'C2F') {
+  if(conversionType === C2F){
     // Logic of conversion
-    output = (currentTempValue * 1.8) + 32;
+    const fahrenheit = celsiusToFahrenheit(currentTempValue);
+    output = `${currentTempValue}°C = ${fahrenheit}°F`
   } else {
-    output = (currentTempValue - 32) / 1.8;)
+    const celsius = fahrenheitToCelsius(currentTempValue);
+    output = `${currentTempValue}°F = ${celsius}°C`
+  }
+  result.textContent = output;
+});
+
